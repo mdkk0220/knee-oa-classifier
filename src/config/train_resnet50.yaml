@@ -1,0 +1,23 @@
+seed: 42
+data:
+  manifest: "metadata/dataset_manifest.csv"
+  img_root: "data/processed"
+  input_size: 512
+  batch_size: 16
+  num_workers: 4
+model:
+  name: "resnet50"
+  num_classes: 5
+  dropout: 0.2
+train:
+  epochs: 20
+  lr: 3e-4
+  weight_decay: 1e-4
+  scheduler: "cosine"
+  warmup_epochs: 1
+  amp: true
+  class_weight: true
+val:
+  metric: "qwk"
+  early_stop_patience: 5
+output_dir: "outputs/resnet50_baseline"

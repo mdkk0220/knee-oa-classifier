@@ -1,0 +1,5 @@
+filepath,label,patient_id,split
+patient_0001/pa_ap.png,2,P0001,train
+patient_0002/pa_ap.png,0,P0002,train
+patient_0003/pa_ap.png,3,P0003,val
+patient_0004/pa_ap.png,1,P0004,test
