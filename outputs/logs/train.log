@@ -1,0 +1,10 @@
+2025-10-27 14:05:20 - INFO - 📊 Class weighting enabled (placeholder: implement after label analysis)
+2025-10-27 14:10:33 - INFO - 🔧 Device: cpu
+2025-10-27 14:10:33 - INFO - ⚙️ Config loaded from: src/config/train_resnet50.yaml
+2025-10-27 14:10:33 - INFO - 📦 Dataloader ready (Train=2, Val=1)
+2025-10-27 14:10:33 - INFO - 🧠 Model initialized: resnet50
+2025-10-27 14:10:33 - INFO - 📊 Class weighting enabled (placeholder: implement after label analysis)
+2025-10-27 14:10:33 - INFO - 🚀 Optimizer: AdamW | lr=0.000300, weight_decay=0.000100
+2025-10-27 14:10:33 - INFO - 📈 Scheduler: CosineAnnealingLR
+2025-10-27 14:10:33 - INFO - ⚡ AMP enabled: True
+2025-10-27 14:10:33 - INFO - 🏁 Training started for 20 epochs
