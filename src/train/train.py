@@ -4,7 +4,7 @@ import yaml
 import torch
 import torch.nn as nn
 import torch.optim as optim
-from tqdm import tqdmD
+from tqdm import tqdm
 
 from src.models.resnet50 import ResNet50KL
 from src.utils.seed import set_seed
