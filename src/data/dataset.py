@@ -37,7 +37,7 @@ class XrayDataset(Dataset):
             augmented = self.transform(image=img)
             img = augmented["image"]
 
-        return img, label, path
+        return img, label
 
 
 def get_dataloaders(manifest, img_root, input_size, batch_size, num_workers=4):

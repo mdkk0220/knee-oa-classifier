@@ -8,3 +8,72 @@
 2025-10-27 14:10:33 - INFO - 📈 Scheduler: CosineAnnealingLR
 2025-10-27 14:10:33 - INFO - ⚡ AMP enabled: True
 2025-10-27 14:10:33 - INFO - 🏁 Training started for 20 epochs
+2025-11-03 17:13:24 - INFO - 🔧 Device: cpu
+2025-11-03 17:13:24 - INFO - ⚙️ Config loaded from: src/config/train_resnet50.yaml
+2025-11-03 17:13:24 - INFO - 📦 Dataloader ready (Train=2, Val=1)
+2025-11-03 17:13:25 - INFO - 🧠 Model initialized: resnet50
+2025-11-03 17:13:25 - INFO - 📊 Class weighting enabled (placeholder: implement after label analysis)
+2025-11-03 17:13:25 - INFO - 🚀 Optimizer: AdamW | lr=0.000300, weight_decay=0.000100
+2025-11-03 17:13:25 - INFO - 📈 Scheduler: CosineAnnealingLR
+2025-11-03 17:13:25 - INFO - ⚡ AMP enabled: True
+2025-11-03 17:13:25 - INFO - 🏁 Training started for 20 epochs
+2025-11-03 17:24:57 - INFO - 🔧 Device: cpu
+2025-11-03 17:24:57 - INFO - ⚙️ Config loaded from: src/config/train_resnet50.yaml
+2025-11-03 17:24:58 - INFO - 📦 Dataloader ready (Train=5778, Val=826)
+2025-11-03 17:24:58 - INFO - 🧠 Model initialized: resnet50
+2025-11-03 17:24:58 - INFO - 📊 Class weighting enabled (placeholder: implement after label analysis)
+2025-11-03 17:24:58 - INFO - 🚀 Optimizer: AdamW | lr=0.000300, weight_decay=0.000100
+2025-11-03 17:24:58 - INFO - 📈 Scheduler: CosineAnnealingLR
+2025-11-03 17:24:58 - INFO - ⚡ AMP enabled: True
+2025-11-03 17:24:58 - INFO - 🏁 Training started for 20 epochs
+2025-11-03 17:27:45 - INFO - 🔧 Device: cpu
+2025-11-03 17:27:45 - INFO - ⚙️ Config loaded from: src/config/train_resnet50.yaml
+2025-11-03 17:27:45 - INFO - 📦 Dataloader ready (Train=5778, Val=826)
+2025-11-03 17:27:46 - INFO - 🧠 Model initialized: resnet50
+2025-11-03 17:27:46 - INFO - 📊 Class weighting enabled (placeholder: implement after label analysis)
+2025-11-03 17:27:46 - INFO - 🚀 Optimizer: AdamW | lr=0.000300, weight_decay=0.000100
+2025-11-03 17:27:46 - INFO - 📈 Scheduler: CosineAnnealingLR
+2025-11-03 17:27:46 - INFO - ⚡ AMP enabled: True
+2025-11-03 17:27:46 - INFO - 🏁 Training started for 20 epochs
+2025-11-03 17:40:08 - INFO - 🔧 Device: cpu
+2025-11-03 17:40:08 - INFO - ⚙️ Config loaded from: src/config/train_resnet50.yaml
+2025-11-03 18:14:14 - INFO - 🔧 Device: cpu
+2025-11-03 18:14:14 - INFO - ⚙️ Config loaded from: src/config/train_resnet50.yaml
+2025-11-03 18:17:31 - INFO - 🔧 Device: cpu
+2025-11-03 18:17:31 - INFO - ⚙️ Config loaded from: src/config/train_resnet50.yaml
+2025-11-03 18:19:25 - INFO - 🔧 Device: cpu
+2025-11-03 18:19:25 - INFO - ⚙️ Config loaded from: src/config/train_resnet50.yaml
+2025-11-03 18:19:25 - INFO - 📦 Dataloader ready (Train=5778, Val=826)
+2025-11-03 18:19:25 - INFO - 🧠 Model initialized: resnet50
+2025-11-03 18:19:25 - INFO - 📊 Class weighting enabled (placeholder: implement after label analysis)
+2025-11-03 18:19:25 - INFO - 🚀 Optimizer: AdamW | lr=0.000300, weight_decay=0.000100
+2025-11-03 18:19:25 - INFO - 📈 Scheduler: CosineAnnealingLR
+2025-11-03 18:19:25 - INFO - ⚡ AMP enabled: True
+2025-11-03 18:19:25 - INFO - 🏁 Training started for 20 epochs
+2025-11-03 18:26:54 - INFO - 🔧 Device: cpu
+2025-11-03 18:26:54 - INFO - ⚙️ Config loaded from: src/config/train_resnet50.yaml
+2025-11-03 18:26:54 - INFO - 📦 Dataloader ready (Train=5778, Val=826)
+2025-11-03 18:26:54 - INFO - 🧠 Model initialized: resnet50
+2025-11-03 18:26:54 - INFO - 📊 Class weighting enabled (placeholder: implement after label analysis)
+2025-11-03 18:26:54 - INFO - 🚀 Optimizer: AdamW | lr=0.000300, weight_decay=0.000100
+2025-11-03 18:26:54 - INFO - 📈 Scheduler: CosineAnnealingLR
+2025-11-03 18:26:54 - INFO - ⚡ AMP enabled: True
+2025-11-03 18:26:54 - INFO - 🏁 Training started for 20 epochs
+2025-11-03 18:33:11 - INFO - 🔧 Device: cpu
+2025-11-03 18:33:11 - INFO - ⚙️ Config loaded from: src/config/train_resnet50.yaml
+2025-11-03 18:33:11 - INFO - 📦 Dataloader ready (Train=5778, Val=826)
+2025-11-03 18:33:12 - INFO - 🧠 Model initialized: resnet50
+2025-11-03 18:33:12 - INFO - 📊 Class weighting enabled (placeholder: implement after label analysis)
+2025-11-03 18:33:12 - INFO - 🚀 Optimizer: AdamW | lr=0.000300, weight_decay=0.000100
+2025-11-03 18:33:12 - INFO - 📈 Scheduler: CosineAnnealingLR
+2025-11-03 18:33:12 - INFO - ⚡ AMP enabled: True
+2025-11-03 18:33:12 - INFO - 🏁 Training started for 20 epochs
+2025-11-03 18:45:11 - INFO - 🔧 Device: cpu
+2025-11-03 18:45:11 - INFO - ⚙️ Config loaded from: src/config/train_resnet50.yaml
+2025-11-03 18:45:11 - INFO - 📦 Dataloader ready (Train=5778, Val=826)
+2025-11-03 18:45:12 - INFO - 🧠 Model initialized: resnet50
+2025-11-03 18:45:12 - INFO - 📊 Class weighting enabled (placeholder: implement after label analysis)
+2025-11-03 18:45:12 - INFO - 🚀 Optimizer: AdamW | lr=0.000300, weight_decay=0.000100
+2025-11-03 18:45:12 - INFO - 📈 Scheduler: CosineAnnealingLR
+2025-11-03 18:45:12 - INFO - ⚡ AMP enabled: True
+2025-11-03 18:45:12 - INFO - 🏁 Training started for 20 epochs
