@@ -1,3 +1,21 @@
-weights: "outputs/resnet50_baseline/best.ckpt"
-input_size: 512
-labels: ["KL-0","KL-1","KL-2","KL-3","KL-4"]
+# ============================================================
+# infer.yaml | Fine-tuned 모델 평가 및 추론(inference) 설정
+# ------------------------------------------------------------
+# 목적: fine-tuned ResNet50 모델을 이용해 test 데이터 평가 및 결과 저장
+# ============================================================
+
+# ✅ 1. 모델 관련 설정
+weights: "outputs/resnet50_finetune_combined/model_best.pth"   # fine-tuned 모델 가중치 경로
+input_size: 512                                        # 입력 이미지 크기
+labels: ["KL-0", "KL-1", "KL-2", "KL-3", "KL-4"]       # 예측 클래스 이름
+
+# ✅ 2. 데이터 관련 설정
+data_dir: "data/raw"                              # 테스트셋 이미지 폴더 경로
+batch_size: 16
+num_workers: 4
+
+# ✅ 3. 결과 저장 관련 설정
+save_path: "outputs/evaluation/fine_tune_report.txt"   # 결과 리포트 저장 파일
+
+# ✅ 4. 실행 환경 설정
+device: "cpu"                                         # GPU 사용 ('cpu'로 변경 가능)
