@@ -16,13 +16,24 @@ def to_numpy_img(t: torch.Tensor) -> np.ndarray:
     t = np.transpose(t, (1, 2, 0))
     return t
 
+
 def overlay_heatmap(img_rgb: np.ndarray, heatmap: np.ndarray, alpha: float = 0.4) -> np.ndarray:
-    """RGB 이미지와 [0..1] heatmap을 합성."""
-    hm = (heatmap * 255).astype(np.uint8)
-    hm_color = cv2.applyColorMap(hm, cv2.COLORMAP_JET)
-    hm_color = cv2.cvtColor(hm_color, cv2.COLOR_BGR2RGB)
-    out = cv2.addWeighted(hm_color, alpha, img_rgb, 1 - alpha, 0)
+    """
+    RGB 이미지와 [0..1] heatmap을 합성.
+    - 기존 JET colormap(파랑~빨강 다색) → 단색 빨강 강조로 변경
+    - 모델이 집중한 부분만 자연스럽게 표시 (의료 영상용)
+    """
+    # Heatmap을 0~255 범위로 변환
+    hm = np.uint8(255 * heatmap)
+    hm = cv2.resize(hm, (img_rgb.shape[1], img_rgb.shape[0]))
+
+    # 🔴 단색 빨간 채널만 남기기 (Blue/Green=0)
+    red_hm = cv2.merge([hm, hm * 0, hm * 0])
+
+    # 알파 블렌딩으로 원본과 합성
+    out = cv2.addWeighted(red_hm, alpha, img_rgb, 1 - alpha, 0)
     return out
+
 
 def save_fig_grid(images: list[np.ndarray], titles: list[str] | None, path: str, cols: int = 2, dpi: int = 140):
     """이미지 여러 장을 그리드로 저장"""
@@ -39,8 +50,10 @@ def save_fig_grid(images: list[np.ndarray], titles: list[str] | None, path: str,
     plt.savefig(path)
     plt.close()
 
+
 def pil_to_rgb_np(pil: Image.Image) -> np.ndarray:
     return np.array(pil.convert("RGB"))
+
 
 def read_gray_as_rgb(path: str) -> np.ndarray:
     """흑백 X-ray를 RGB로 확장해서 반환."""
