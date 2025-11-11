@@ -57,7 +57,7 @@ class XrayDataset(Dataset):
             augmented = self.transform(image=img)
             img = augmented["image"]
 
-        return img, label, path
+        return img, label
 
 
 # get_dataloaders 함수는 그대로 유지해도 됩니다.
