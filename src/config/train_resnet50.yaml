@@ -1,14 +1,19 @@
+
+
 seed: 42
+
 data:
-  manifest: "metadata/dataset_manifest.csv"
-  img_root: "data/processed"
+  manifest: "metadata/dataset_manifest_fixed.csv"
+  img_root: "data/processed_patient"
   input_size: 512
   batch_size: 16
   num_workers: 4
+
 model:
   name: "resnet50"
   num_classes: 5
   dropout: 0.2
+
 train:
   epochs: 20
   lr: 3e-4
@@ -17,7 +22,9 @@ train:
   warmup_epochs: 1
   amp: true
   class_weight: true
+
 val:
   metric: "qwk"
   early_stop_patience: 5
+
 output_dir: "outputs/resnet50_baseline"
