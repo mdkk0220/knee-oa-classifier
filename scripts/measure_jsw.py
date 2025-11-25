@@ -4,10 +4,9 @@
 # - 입력: 좌/우 무릎 AP X-ray (각각 한 장씩)
 # - 내측(medial) ROI에서 여러 세로 컬럼을 훑어서
 #   femur 하연 ~ tibia 상연 간격(px)을 측정
-# - 가장 좁은(하위 20% 근처) 간격을 대표 JSW로 사용
+# - 가장 좁은(하위 15~20% 근처) 간격을 대표 JSW로 사용
 # - 결과: 각 무릎에 짧은 가로선 + 점선 세로선 + JSW(mm) 텍스트
-# - KL 등급은 이 스크립트에서 사용하지 않고,
-#   기존 compare_knees_confidence.py 쪽에서 그대로 사용
+# - KL 등급은 이 스크립트에서 사용하지 않음
 # ============================================================
 
 import cv2
@@ -24,18 +23,19 @@ def get_medial_roi(h: int, w: int, side: str):
     side: 'L' (왼쪽 무릎), 'R' (오른쪽 무릎)
     반환: (x1, x2, y1, y2)  # 내측 관절 간격이 있을 법한 사각형
     """
+    # 세로는 관절 높이 근처만 사용 (대략 중간~아래)
     y1 = int(h * 0.30)
     y2 = int(h * 0.80)
 
     side = side.upper()
     if side == "L":
         # 왼쪽 무릎 → 이미지 오른쪽이 내측
-        x1 = int(w * 0.45)
-        x2 = int(w * 0.95)
+        x1 = int(w * 0.55)
+        x2 = int(w * 0.98)
     else:
         # 오른쪽 무릎 → 이미지 왼쪽이 내측
-        x1 = int(w * 0.05)
-        x2 = int(w * 0.55)
+        x1 = int(w * 0.02)
+        x2 = int(w * 0.45)
 
     return x1, x2, y1, y2
 
@@ -64,7 +64,7 @@ def compute_jsw_px(gray: np.ndarray, side: str):
 
     candidates = []
 
-    # 허용 두께 범위(px)
+    # 허용 두께 범위(px)  (너무 얇거나 너무 두꺼운 간격 필터링)
     min_px = max(3, int(roi_h * 0.03))
     max_px = int(roi_h * 0.30)
 
@@ -91,7 +91,7 @@ def compute_jsw_px(gray: np.ndarray, side: str):
         gx = x1 + cx
         mid = (top + bottom) / 2.0
 
-        # 세로 위치가 너무 위/아래가 아닌지 체크
+        # 세로 위치가 너무 위/아래면 제외
         if not (h * 0.30 <= mid <= h * 0.80):
             continue
 
@@ -100,9 +100,9 @@ def compute_jsw_px(gray: np.ndarray, side: str):
     if not candidates:
         raise RuntimeError("관절선을 안정적으로 찾지 못했습니다.")
 
-    # 관절 간격 분포에서 하위 20% 근처의 좁은 간격을 대표값으로 선택
+    # 관절 간격 분포에서 "좁은 관절" 쪽을 대표로 선택
     dists = np.array([c[0] for c in candidates], dtype=np.float32)
-    target = np.percentile(dists, 20)
+    target = np.percentile(dists, 15)  # 하위 15% 근처
 
     near = [c for c in candidates if c[0] <= target * 1.3]
     if not near:
@@ -159,9 +159,9 @@ def draw_jsw_overlay(
 
     side = side.upper()
     if side == "L":
-        x_base = int(w * 0.18)
+        x_base = int(w * 0.25)    # 왼쪽 무릎: 화면 1/4 지점
     else:
-        x_base = int(w * 0.58)
+        x_base = int(w * 0.60)    # 오른쪽 무릎: 화면 3/5 지점
 
     # 이미지 안에 확실히 들어오도록 클램프
     x_text = max(8, min(x_base, w - text_w - 8))
@@ -220,11 +220,11 @@ def compare_jsw(left_path: str, right_path: str, save_path: str, px_to_mm: float
 
 
 # ------------------------------------------------------------
-# 6. 실행부 (네가 말한 전처리 데이터 경로 기준)
+# 6. 실행부 (내측, archive2/test/1 기준)
 # ------------------------------------------------------------
 if __name__ == "__main__":
-    left_img = "data/raw/archive2/train/4/9555061L.png"
-    right_img = "data/raw/archive2/train/4/9555061R.png"
+    left_img = "data/raw/archive2/test/1/9008934L.png"
+    right_img = "data/raw/archive2/test/1/9008934R.png"
     save_img = "outputs/vis/week6/jsw_medial_final.png"
 
     compare_jsw(left_img, right_img, save_img, px_to_mm=0.1)
