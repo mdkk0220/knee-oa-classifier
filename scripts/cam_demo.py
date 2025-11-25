@@ -67,6 +67,7 @@ def main():
     x = TR(img).unsqueeze(0)
 
     # 🔹 모델 로드
+    model_path = "outputs/resnet50_finetune_combined/model_best.pth"
     model = build_resnet50_trained(model_path)
     target_layer = model.backbone.layer4[-1]  # Grad-CAM 타깃 레이어 지정
 

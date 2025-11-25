@@ -19,7 +19,7 @@ from src.explain.viz_utils import overlay_heatmap, save_fig_grid
 # 1. 모델 불러오기 (학습된 KL 모델)
 # -------------------------------------------------
 def build_resnet50_trained(weight_path="outputs/resnet50_finetune_combined/model_best.pth"):
-    print(f"✅ Loading trained model from {weight_path}")
+    print(f" Loading trained model from {weight_path}")
     model = models.resnet50(weights=None)
     model.fc = torch.nn.Linear(2048, 5)  # KL 0~4 = 클래스 5개
 
@@ -32,7 +32,7 @@ def build_resnet50_trained(weight_path="outputs/resnet50_finetune_combined/model
         new_state_dict[new_k] = v
 
     missing, unexpected = model.load_state_dict(new_state_dict, strict=False)
-    print(f"ℹ️ Missing keys: {len(missing)}, Unexpected keys: {len(unexpected)}")
+    print(f" Missing keys: {len(missing)}, Unexpected keys: {len(unexpected)}")
 
     model.eval()
     return model
@@ -63,7 +63,7 @@ def main():
         left_img = Image.open(left_path).convert("RGB")
         right_img = Image.open(right_path).convert("RGB")
     except FileNotFoundError:
-        print("❌ 왼쪽 또는 오른쪽 이미지 파일을 찾을 수 없습니다.")
+        print(" 왼쪽 또는 오른쪽 이미지 파일을 찾을 수 없습니다.")
         return
 
     # 전처리
@@ -86,7 +86,7 @@ def main():
         try:
             cam_map, _ = cam(x)
         except Exception as e:
-            print(f"⚠️ GradCAM 오류 발생: {e}")
+            print(f" GradCAM 오류 발생: {e}")
             cam_map = torch.zeros((1, 224, 224))
         return pred.item(), conf.item(), cam_map
 
@@ -98,11 +98,11 @@ def main():
     # -----------------------------------
     def confidence_mark(conf):
         if conf >= 0.8:
-            return "✅ 신뢰 높음"
+            return " 신뢰 높음"
         elif conf >= 0.6:
-            return "⚠️ 중간 (의심 예측)"
+            return " 중간 (의심 예측)"
         else:
-            return "❌ 낮음 (재검토 필요)"
+            return " 낮음 (재검토 필요)"
 
     left_mark = confidence_mark(left_conf)
     right_mark = confidence_mark(right_conf)
@@ -121,12 +121,12 @@ def main():
     # 콘솔 출력
     # -----------------------------------
     print("────────────────────────────")
-    print("📊 좌우 무릎 비교 결과")
+    print(" 좌우 무릎 비교 결과")
     print(f"왼쪽 예측 등급: {left_pred} (확신도: {left_conf:.2f}) → {left_mark}")
     print(f"오른쪽 예측 등급: {right_pred} (확신도: {right_conf:.2f}) → {right_mark}")
     print("────────────────────────────")
-    print(f"👉 {compare_text}")
-    print(f"✅ 시각화 결과 저장: {out_path}")
+    print(f" {compare_text}")
+    print(f" 시각화 결과 저장: {out_path}")
 
     # -----------------------------------
     # 결과 저장
