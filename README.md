@@ -25,6 +25,10 @@ flowchart LR
     E --> F
 ```
 
+<img src="outputs/vis/week2/cam_sample.png" width="70%" alt="Grad-CAM 예시">
+
+왼쪽은 입력 X-ray, 오른쪽은 Grad-CAM으로 모델이 판단에 많이 쓴 부위(빨간색)를 겹쳐 본 결과입니다.
+
 ## 📂 문서
 
 | 문서 | 내용 |
