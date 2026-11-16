@@ -51,4 +51,9 @@ knee-oa-classifier/
 - **원본 분할:** 학습 5,778장 · 검증 826장 · 테스트 1,656장 · 자동 검출 테스트 1,526장 (`data/raw/archive2/`)
 - 프로젝트에서는 환자 · 좌우 무릎 단위로 다시 정리해 사용했습니다 (`scripts/restructure_*.py`). 최종 평가는 테스트 3,052장 기준입니다.
 
+**보조 데이터 (`data/raw/digital_knee_xray/`)**
+- **출처:** Gornale, S., Patravali, P. (2020). *Digital Knee X-ray Images* (Version 1). Mendeley Data. https://doi.org/10.17632/t9ndx37v5h.1
+- **구성:** 무릎 X-ray 1,650장을 전문의 2명(MedicalExpert-I · II)이 각각 KL 0~4로 판정 → 3,300장
+- 라이선스와 이용 조건은 위 Mendeley 페이지 표기를 따릅니다. 최종 평가에는 쓰지 않았습니다.
+
 [← 처음으로](../README.md)
